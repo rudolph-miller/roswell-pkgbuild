@@ -9,7 +9,7 @@ license="MIT"
 source=('roswell::git+https://github.com/snmsts/roswell.git#branch=release')
 pkgver() {
   cd $srcdir/$pkgname
-  git describe
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 depends=('curl' 'automake' 'autoconf')
